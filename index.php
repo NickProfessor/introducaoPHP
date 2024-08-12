@@ -11,10 +11,13 @@
         default => "Nota inválida"
     };
 
-    $arrayQueImitaObjeto = [
-        "nome" => "nick",
-        "idade" => 18,
-        "cidade" => "são paulo"
-    ];
+    $arrayQueImitaObjeto = criaPessoa("Nickollas", 18, "SJC");
 
-    echo $arrayQueImitaObjeto["nome"];
+    function criaPessoa(string $nome, int $idade, string $cidade){
+        return [
+            "nome" => $nome,
+            "idade" => $idade,
+            "cidade" => $cidade
+        ];
+    }
+    file_put_contents("./pessoas.json", json_encode($arrayQueImitaObjeto));
