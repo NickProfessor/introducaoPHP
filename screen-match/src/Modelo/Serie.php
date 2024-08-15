@@ -2,6 +2,7 @@
 
 class Serie extends Titulo
 {
+    
     public function __construct(
         string $nome,
         int $anoLancamento,
