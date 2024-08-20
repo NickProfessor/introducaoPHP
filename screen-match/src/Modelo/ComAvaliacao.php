@@ -1,10 +1,20 @@
 <?php
-namespace ScreenMatch\Modelo;
-    trait ComAvaliacao{
-        private array $notas = [];
 
-        public function avalia(float $nota): void
+namespace ScreenMatch\Modelo;
+use ScreenMatch\Exceptions\NotaInvalidaException;
+trait ComAvaliacao
+{
+    private array $notas = [];
+
+    /**
+     * @throws NotaInvalidaException Se a nota for negativa ou maior que 10
+     */
+    public function avalia(float $nota): void
     {
+        
+        if( $nota < 0 || $nota > 10){
+            throw new NotaInvalidaException();
+        }
         $this->notas[] = $nota;
     }
 
@@ -15,4 +25,4 @@ namespace ScreenMatch\Modelo;
 
         return $somaNotas / $quantidadeNotas;
     }
-    }
+}
