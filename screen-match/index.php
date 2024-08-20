@@ -1,17 +1,14 @@
 <?php
 
-require "autoload.php";
+require 'autoload.php';
 
 use ScreenMatch\Modelo\{
-    Episodio,
-    Filme,
-    Serie,
-    Genero,
+    Filme, Episodio, Serie, Genero
 };
 use ScreenMatch\Calculos\{
-    CalculadoraDeMaratona,
-    ConversorDeNota
+    CalculadoraDeMaratona, ConversorNotaEstrela
 };
+
 echo "Bem-vindo(a) ao ScreenMatch\n";
 
 $filme = new Filme(
@@ -33,7 +30,8 @@ echo $filme->media() . "\n";
 echo $filme->anoLancamento . "\n";
 
 $serie = new Serie('Lost', 2007, Genero::Drama, 10, 20, 30);
-$episodio = new Episodio($serie, "episodio piloto", 1);
+$episodio = new Episodio($serie, 'Episódio piloto', 1);
+
 echo $serie->anoLancamento . "\n";
 
 $serie->avalia(8);
@@ -46,6 +44,7 @@ $calculadora->inclui($serie);
 $duracao = $calculadora->duracao();
 
 echo "Para essa maratona, você precisa de $duracao minutos\n";
-$conversor = new ConversorDeNota();
-echo $conversor->converte($serie)."\n";
-echo $conversor->converte($filme)."\n";
+
+$conversor = new ConversorNotaEstrela();
+echo $conversor->converte($serie) . "\n";
+echo $conversor->converte($filme) . "\n";
